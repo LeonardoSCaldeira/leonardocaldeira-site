@@ -1,14 +1,5 @@
-# Site estático. Este arquivo substitui o .htaccess do WordPress que existia
-# antes — sem isso, as regras antigas mandam tudo para o index.php e a página
-# nova não aparece.
-
-# ---------------------------------------------------------------- HTTPS
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{HTTPS} !=on
-  RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-</IfModule>
+# Regras da página estática. Este arquivo vale só para esta pasta.
+# O WordPress continua mandando no resto do site, com o .htaccess dele na raiz.
 
 # ---------------------------------------------------------------- tipos
 # O Apache da hospedagem pode não conhecer AVIF; sem isto o navegador recebe
@@ -53,8 +44,4 @@
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# ---------------------------------------------------------------- erros
-ErrorDocument 404 /index.html
-
-# Sem listagem de diretório.
 Options -Indexes
