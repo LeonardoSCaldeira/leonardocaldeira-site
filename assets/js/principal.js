@@ -76,22 +76,41 @@ if (marcados.length) {
   marcados.forEach((m) => olho.observe(m));
 }
 
-// 3. Parallax: deslocamento de no máximo 26px, só enquanto o alvo está à vista.
-//    Um requestAnimationFrame no projeto inteiro, e ele para quando não há alvo.
+// 3. Movimento ligado à rolagem: o parallax das imagens e o preenchimento da
+//    linha do tempo. Um único requestAnimationFrame para os dois, ligado por
+//    IntersectionObserver e parado quando não há nada à vista.
 const alvosParallax = [...document.querySelectorAll('[data-parallax]')];
+const linhaTempo = document.querySelector('.linha-tempo');
+const estacoes = linhaTempo ? [...linhaTempo.querySelectorAll('.estacao')] : [];
 
-if (alvosParallax.length && !semMovimento) {
+if ((alvosParallax.length || linhaTempo) && !semMovimento) {
   const ativos = new Set();
   let quadro = 0;
 
+  const limitar = (n) => Math.max(0, Math.min(1, n));
+
   function passo() {
     const meio = innerHeight / 2;
+
     for (const alvo of ativos) {
       const caixa = alvo.getBoundingClientRect();
+
+      if (alvo === linhaTempo) {
+        // Enche conforme a seção atravessa a tela, e acende cada estação
+        // quando o preenchimento passa por ela.
+        const avanco = limitar((innerHeight * 0.78 - caixa.top) / (caixa.height + innerHeight * 0.25));
+        linhaTempo.style.setProperty('--avanco', avanco.toFixed(3));
+        estacoes.forEach((estacao, i) => {
+          estacao.classList.toggle('ativa', avanco >= (i + 0.35) / estacoes.length);
+        });
+        continue;
+      }
+
       const desvio = (caixa.top + caixa.height / 2 - meio) * parseFloat(alvo.dataset.parallax);
       const imagem = alvo.querySelector('img');
       if (imagem) imagem.style.setProperty('--desvio', Math.max(-26, Math.min(26, desvio)).toFixed(1) + 'px');
     }
+
     quadro = ativos.size && !document.hidden ? requestAnimationFrame(passo) : 0;
   }
 
@@ -103,6 +122,8 @@ if (alvosParallax.length && !semMovimento) {
   });
 
   alvosParallax.forEach((a) => vigia.observe(a));
+  if (linhaTempo) vigia.observe(linhaTempo);
+
   addEventListener('visibilitychange', () => {
     if (!document.hidden && ativos.size && !quadro) quadro = requestAnimationFrame(passo);
   });

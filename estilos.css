@@ -169,21 +169,6 @@ section { padding-block: var(--respiro); }
 
 /* ---------------------------------------------------------------- topo */
 
-.barra {
-  border-bottom: 1px solid rgba(21, 19, 15, 0.14);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--pedra);
-}
-.barra-interna {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 0.7rem;
-}
-.barra .oculto-celular { display: none; }
-
 .nav {
   position: sticky;
   top: 0;
@@ -235,11 +220,11 @@ section { padding-block: var(--respiro); }
 
 /* ---------------------------------------------------------------- hero */
 
-.hero { position: relative; padding-block: 3rem 5rem; }
+.hero { position: relative; padding-block: 4rem 6rem; }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5.9vw, 4.75rem);
-  line-height: 1.03;
+  font-size: clamp(2.7rem, 6.3vw, 5.25rem);
+  line-height: 1.02;
   margin: 1.1rem 0 1.75rem;
 }
 
@@ -359,8 +344,6 @@ section { padding-block: var(--respiro); }
   border-bottom-color: var(--terra);
 }
 
-/* Etiquetas verticais nas laterais, como nas referências. */
-.lateral { display: none; }
 
 /* ---------------------------------------------------------------- projetos */
 
@@ -389,15 +372,7 @@ section { padding-block: var(--respiro); }
 .projeto a:focus-visible .moldura { border-color: var(--ouro); }
 .projeto a:hover .moldura img { transform: scale(1.03); }
 
-.rotulo-projeto { display: block; padding-top: 1rem; }
-.numero-projeto {
-  display: block;
-  font-family: var(--display);
-  font-size: 1.5rem;
-  color: var(--ouro);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
+.rotulo-projeto { display: block; padding-top: 1.1rem; text-align: center; }
 .nome-projeto {
   display: block;
   font-size: 0.875rem;
@@ -408,101 +383,152 @@ section { padding-block: var(--respiro); }
 .tipo-projeto {
   display: block;
   font-size: 0.75rem;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ouro);
-  margin-top: 0.35rem;
-  line-height: 1.6;
+  line-height: 1.9;
 }
+.nome-projeto + .tipo-projeto { margin-top: 0.5rem; }
 
 /* ---------------------------------------------------------------- serviços */
 
-.oficina { background: var(--areia); padding-block: calc(var(--respiro) * 1.3); }
-.oficina h2 { margin-bottom: 3.25rem; }
+.oficina { background: var(--areia); padding-block: calc(var(--respiro) * 1.15); }
+.oficina h2 { margin-bottom: 2.75rem; }
 .oficina .eyebrow { margin-bottom: 0.9rem; }
-.oficina-grade { display: grid; gap: 5.5rem; }
+.rotulo-tempo { margin-top: calc(var(--respiro) * 0.9); }
 
-.lista-servicos, .lista-passos {
+.servicos-linha {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.servico {
   display: grid;
-  grid-template-columns: 1.75rem 1fr;
-  gap: 1.25rem;
-  padding-block: 2.4rem;
-  border-top: 1px solid rgba(21, 19, 15, 0.14);
+  gap: 2.25rem;
 }
-.servico:last-child { border-bottom: 1px solid rgba(21, 19, 15, 0.14); }
-.servico svg { width: 1.35rem; height: 1.35rem; color: var(--terra); margin-top: 0.2rem; }
-.servico p { font-size: 0.9375rem; color: var(--pedra); margin: 0.6rem 0 0; }
+.servico { border-top: 1px solid rgba(21, 19, 15, 0.16); padding-top: 1.4rem; }
+.servico h3 { margin-bottom: 0.55rem; }
+.servico p { font-size: 0.9375rem; color: var(--pedra); margin: 0; }
 
-.lista-passos { border-left: 1px solid rgba(21, 19, 15, 0.14); padding-left: 3rem; }
-.passo { position: relative; padding-block: 0 4.25rem; }
-.passo:last-child { padding-bottom: 0; }
-.passo .num {
+/* A linha do tempo: o trilho preenche conforme a seção atravessa a tela, e
+   cada estação acende quando o preenchimento chega nela. No celular ela roda
+   para a vertical, mesma mecânica no outro eixo. */
+.linha-tempo { position: relative; margin-top: 2.75rem; }
+
+.trilho {
+  position: absolute;
+  left: 4px;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: rgba(21, 19, 15, 0.16);
+}
+.trilho-cheio {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--terra);
+  transform: scaleY(var(--avanco, 0));
+  transform-origin: 50% 0;
+}
+
+.estacoes {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 2.5rem;
+  display: grid;
+  gap: 2.75rem;
+}
+.estacao { position: relative; }
+.ponto {
+  position: absolute;
+  left: -2.35rem;
+  top: 0.55rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--areia);
+  border: 1px solid var(--pedra);
+  transition: background-color 460ms var(--suave), border-color 460ms var(--suave),
+              transform 460ms var(--suave);
+}
+.estacao.ativa .ponto {
+  background: var(--terra);
+  border-color: var(--terra);
+  transform: scale(1.35);
+}
+.estacao .num {
+  display: block;
   font-family: var(--display);
   font-weight: 300;
   font-size: 1.9rem;
-  color: var(--terra);
   line-height: 1;
-  display: block;
-  margin-bottom: 0.7rem;
+  color: var(--pedra);
+  margin-bottom: 0.6rem;
+  transition: color 460ms var(--suave);
 }
-.passo p { font-size: 0.9375rem; color: var(--pedra); margin: 0.7rem 0 0; }
+.estacao.ativa .num { color: var(--terra); }
+.estacao h3 { margin-bottom: 0.5rem; }
+.estacao p { font-size: 0.9375rem; color: var(--pedra); margin: 0; }
 
-.citacao {
-  background: var(--tinta);
-  color: var(--areia);
-  padding: 2.5rem 2rem;
-  position: relative;
-}
+/* ---------------------------------------------------------------- citação */
+
+.faixa-citacao { padding-block: calc(var(--respiro) * 0.9); }
+.citacao { margin: 0; text-align: center; max-width: 46rem; margin-inline: auto; }
 .citacao .aspas {
-  font-family: var(--display);
-  font-size: 5rem;
-  line-height: 0.6;
-  color: var(--ouro);
   display: block;
-  margin-bottom: 0.75rem;
+  font-family: var(--display);
+  font-size: 4rem;
+  line-height: 0.5;
+  color: var(--ouro);
+  margin-bottom: 1.75rem;
 }
 .citacao blockquote {
   margin: 0;
   font-family: var(--display);
   font-weight: 300;
-  font-size: 1.35rem;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  line-height: 1.28;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
 }
 .citacao figcaption {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ouro);
 }
 
-/* ---------------------------------------------------------------- garantias */
+/* ---------------------------------------------------------------- compromissos */
 
-.garantias { background: var(--linho); padding-block: 2.75rem; }
-.lista-garantias {
+.compromissos { background: var(--linho); padding-block: calc(var(--respiro) * 0.85); }
+.compromissos .eyebrow { margin-bottom: 2.25rem; }
+.lista-compromissos {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 1.75rem;
+  gap: 2.25rem;
 }
-.garantia { display: grid; grid-template-columns: 2rem 1fr; gap: 0.9rem; align-items: start; }
-.garantia svg { width: 1.5rem; height: 1.5rem; color: var(--tinta); }
-.garantia b {
+.compromisso .risco {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  width: 2rem;
+  height: 2px;
+  background: var(--terra);
+  margin-bottom: 1.1rem;
 }
-.garantia span { font-size: 0.875rem; color: var(--pedra); }
+.compromisso b {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.4rem;
+}
+.compromisso span:not(.risco) {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--pedra);
+  text-wrap: pretty;
+}
 
 /* ---------------------------------------------------------------- sobre */
 
@@ -554,10 +580,9 @@ section { padding-block: var(--respiro); }
   :root { --margem: 2rem; --respiro: 6rem; }
 
   .barra .oculto-celular { display: inline; }
-  .grade-projetos { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.75rem; }
-  .lista-garantias { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  .oficina-grade { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-  .citacao { grid-column: 1 / -1; }
+  .grade-projetos { grid-template-columns: repeat(3, 1fr); gap: 2.5rem 1.5rem; }
+  .servicos-linha { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+  .lista-compromissos { grid-template-columns: repeat(2, 1fr); gap: 2.75rem; }
   .sobre-grade { grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr); gap: 3.5rem; align-items: center; }
   .retrato-sobre { max-width: 100%; }
   .contato-grade { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
@@ -586,38 +611,32 @@ section { padding-block: var(--respiro); }
   .hero-obra { margin: 0; }
   .vitrine-texto { min-height: 4.5rem; }
 
-  .lateral {
-    display: block;
-    position: absolute;
+
+  .grade-projetos { grid-template-columns: repeat(5, 1fr); gap: 1.75rem; }
+  .servicos-linha { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+  .lista-compromissos { grid-template-columns: repeat(4, 1fr); gap: 3rem; }
+
+  /* A linha do tempo deita: o trilho atravessa o topo e as estações penduram. */
+  .trilho {
+    left: 0;
+    right: 0;
     top: 0;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--pedra);
-    writing-mode: vertical-rl;
+    bottom: auto;
+    width: auto;
+    height: 1px;
   }
-  .lateral-esq { left: -1.75rem; transform: rotate(180deg); }
-  .lateral-dir { right: -1.75rem; }
-
-  .grade-projetos { grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
-
-  .oficina-grade {
-    grid-template-columns: minmax(0, 4fr) minmax(0, 4fr) minmax(0, 5fr);
-    gap: 7rem;
-    align-items: start;
+  .trilho-cheio {
+    transform: scaleX(var(--avanco, 0));
+    transform-origin: 0 50%;
   }
-  /* A citação acompanha a altura das colunas ao lado, senão sobra buraco. */
-  .citacao {
-    grid-column: auto;
-    padding: 3rem 2.5rem;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .estacoes {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    padding: 3rem 0 0;
   }
-  .citacao blockquote { font-size: 1.7rem; }
+  .ponto { left: 0; top: calc(-3rem - 4px); }
 
-  .lista-garantias { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+
 
   .sobre-grade { gap: 5.5rem; align-items: center; }
   .retrato-sobre { max-width: 30rem; }
@@ -751,6 +770,7 @@ section { padding-block: var(--respiro); }
   html { scroll-behavior: auto; }
   .js .fatiar .linha-interna { transform: none; transition: none; }
   .js .capa::after { display: none; }
+  .linha-tempo { --avanco: 1; }
   .js .capa img, .js .projeto a .capa img { transform: none; transition: none; }
   .js [data-parallax] { transform: none !important; }
   .botao::before { display: none; }
