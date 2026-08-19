@@ -10,6 +10,7 @@ const titulos = [...document.querySelectorAll('.fatiar')];
 function fatiar(titulo) {
   if (titulo.dataset.texto === undefined) titulo.dataset.texto = titulo.textContent.trim();
 
+  const porLetra = titulo.classList.contains('fatiar-letras');
   titulo.textContent = titulo.dataset.texto;
   const palavras = titulo.dataset.texto.split(/\s+/);
   titulo.textContent = '';
@@ -23,6 +24,7 @@ function fatiar(titulo) {
     return marca;
   });
 
+  // Agrupa as palavras por linha, medindo onde cada uma caiu.
   const linhas = [];
   let topo = null;
   for (const marca of marcas) {
@@ -32,23 +34,84 @@ function fatiar(titulo) {
   }
 
   titulo.textContent = '';
+  let contaLetra = 0;
+
   linhas.forEach((palavrasDaLinha, i) => {
     const mascara = document.createElement('span');
     mascara.className = 'linha';
     const interna = document.createElement('span');
     interna.className = 'linha-interna';
-    interna.textContent = palavrasDaLinha.join(' ');
-    interna.style.transitionDelay = i * 95 + 'ms';
+
+    if (porLetra) {
+      // O título se forma letra a letra. Os espaços ficam como texto solto,
+      // senão o inline-block come o espaçamento entre as palavras.
+      for (const caractere of palavrasDaLinha.join(' ')) {
+        if (caractere === ' ') { interna.append(' '); continue; }
+        const letra = document.createElement('span');
+        letra.className = 'letra';
+        letra.textContent = caractere;
+        letra.style.transitionDelay = contaLetra * 24 + 'ms';
+        interna.append(letra);
+        contaLetra += 1;
+      }
+    } else {
+      interna.textContent = palavrasDaLinha.join(' ');
+      interna.style.transitionDelay = i * 95 + 'ms';
+    }
+
     mascara.append(interna);
     titulo.append(mascara);
     // Espaço entre as máscaras: some na tela, mas mantém a leitura correta
     // do título por leitor de tela.
     if (i < linhas.length - 1) titulo.append(' ');
   });
+
+  // Com o texto picado em letras, o leitor de tela soletraria. O rótulo
+  // devolve a frase inteira e as peças somem da árvore de acessibilidade.
+  if (porLetra) {
+    titulo.setAttribute('aria-label', titulo.dataset.texto);
+    titulo.querySelectorAll('.linha').forEach((l) => l.setAttribute('aria-hidden', 'true'));
+  }
+
+  rearmar(titulo);
 }
 
-if (titulos.length && !semMovimento) {
-  const refatiar = () => titulos.forEach(fatiar);
+// O fatiamento espera as fontes carregarem, e nesse meio-tempo o observador já
+// pode ter marcado o bloco como visto — aí as peças nasceriam prontas e não
+// animariam nada. Tira a marca e devolve no quadro seguinte, para a transição
+// ter de onde sair.
+function rearmar(elemento) {
+  if (!elemento.classList.contains('visto')) return;
+  elemento.classList.remove('visto');
+  requestAnimationFrame(() => requestAnimationFrame(() => elemento.classList.add('visto')));
+}
+
+// Parágrafos que entram palavra a palavra. Mesmo cuidado com leitor de tela.
+function separarPalavras(bloco) {
+  if (bloco.dataset.texto === undefined) bloco.dataset.texto = bloco.textContent.trim();
+  bloco.setAttribute('aria-label', bloco.dataset.texto);
+  bloco.textContent = '';
+
+  bloco.dataset.texto.split(/\s+/).forEach((palavra, i, todas) => {
+    const peca = document.createElement('span');
+    peca.className = 'palavra';
+    peca.setAttribute('aria-hidden', 'true');
+    peca.textContent = palavra;
+    peca.style.transitionDelay = 260 + i * 32 + 'ms';
+    bloco.append(peca);
+    if (i < todas.length - 1) bloco.append(' ');
+  });
+
+  rearmar(bloco);
+}
+
+const paragrafos = [...document.querySelectorAll('.palavras')];
+
+if ((titulos.length || paragrafos.length) && !semMovimento) {
+  const refatiar = () => {
+    titulos.forEach(fatiar);
+    paragrafos.forEach(separarPalavras);
+  };
   document.fonts.ready.then(refatiar);
 
   let largura = innerWidth;
@@ -62,7 +125,7 @@ if (titulos.length && !semMovimento) {
 }
 
 // 2. Revelação de entrada: bloco, título e cortina de imagem, cada um uma vez.
-const marcados = document.querySelectorAll('.revela, .fatiar, .capa');
+const marcados = document.querySelectorAll('.revela, .fatiar, .palavras, .capa');
 
 if (marcados.length) {
   const olho = new IntersectionObserver((entradas, observador) => {
@@ -156,7 +219,17 @@ if (painel && abas.length) {
     painel.setAttribute('aria-labelledby', aba.id);
     link.href = url;
     nome.textContent = titulo;
-    descricao.textContent = desc;
+
+    if (semMovimento) {
+      descricao.textContent = desc;
+    } else {
+      // O texto se forma de novo a cada troca: a interação ganha corpo sem
+      // precisar de efeito novo, reaproveitando a mesma montagem do hero.
+      // separarPalavras já rearma a animação; marcar como visto aqui de novo
+      // cancelaria o rearme antes do quadro seguinte.
+      descricao.dataset.texto = desc;
+      separarPalavras(descricao);
+    }
 
     fontes.forEach((fonte) => {
       const extensao = fonte.type === 'image/avif' ? 'avif' : 'webp';

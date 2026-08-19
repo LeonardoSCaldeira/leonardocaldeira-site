@@ -598,8 +598,13 @@ section { padding-block: var(--respiro); }
   .marca { font-size: 1.25rem; }
   .so-largo { display: inline; }
 
-  .hero { padding-block: 2.5rem 5rem; }
-  .hero .limite { position: relative; }
+  .hero {
+    min-height: 80vh;
+    padding-block: 4rem;
+    display: flex;
+    align-items: center;
+  }
+  .hero > .limite { width: 100%; position: relative; }
 
   .hero-grade {
     display: grid;
@@ -658,6 +663,9 @@ section { padding-block: var(--respiro); }
 
 :root { --lento: 1150ms; --lentissimo: 1500ms; }
 
+/* 1a. Hero em 80% da tela, com o conteúdo centralizado na vertical.
+       min-height e não height: em tela baixa ele cresce em vez de espremer. */
+
 /* 1. Título revelado linha a linha, subindo por trás de uma máscara.
       O padding compensa o corte de descendentes (g, p, ç). */
 .js .fatiar .linha {
@@ -672,6 +680,28 @@ section { padding-block: var(--respiro); }
   transition: transform var(--lento) var(--suave);
 }
 .js .fatiar.visto .linha-interna { transform: translateY(0); }
+
+/* Título que se forma letra a letra. A linha não desliza: quem entra são as
+   peças, com 24ms entre uma e outra. Um momento só na página — os outros
+   títulos continuam subindo por linha. */
+.js .fatiar-letras .linha-interna { transform: none; transition: none; }
+.js .fatiar-letras .linha { overflow: visible; }
+.js .fatiar-letras .letra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.42em);
+  transition: opacity 620ms ease-out, transform 780ms var(--suave);
+}
+.js .fatiar-letras.visto .letra { opacity: 1; transform: translateY(0); }
+
+/* Parágrafo que entra palavra a palavra. */
+.js .palavras .palavra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.34em);
+  transition: opacity 520ms ease-out, transform 680ms var(--suave);
+}
+.js .palavras.visto .palavra { opacity: 1; transform: translateY(0); }
 
 /* 2. Imagem que entra sob cortina, com a escala assentando depois. */
 .js .capa {
@@ -769,6 +799,8 @@ section { padding-block: var(--respiro); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .fatiar .linha-interna { transform: none; transition: none; }
+  .js .fatiar-letras .letra,
+  .js .palavras .palavra { opacity: 1; transform: none; transition: none; }
   .js .capa::after { display: none; }
   .linha-tempo { --avanco: 1; }
   .js .capa img, .js .projeto a .capa img { transform: none; transition: none; }
