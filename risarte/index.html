@@ -299,12 +299,23 @@ a{color:var(--acento)}
   .menu.is-open li{border-bottom:1px solid var(--linha)}
   .menu.is-open a{display:block;padding:var(--s4) 0;font-size:1.1rem}
   .topo__in .btn--wa{display:none}
-  .esp{grid-template-columns:1fr;gap:0}
-  .esp__item{display:block;border-bottom:1px solid var(--linha)}
-  .esp__btn{border-bottom:0}
-  .esp__painel{grid-column:1;grid-row:auto;border:0;border-top:0;border-radius:0;min-height:0;padding:0 0 var(--s5) 3.4rem;
-    display:none;opacity:1;visibility:visible;transform:none;background:transparent}
-  .esp__painel.is-on{display:block;animation:abre .35s ease}
+  /* cada especialidade vira um cartao inteiro, ja aberto: nada depende de toque */
+  .esp{grid-template-columns:1fr;gap:var(--s4)}
+  .esp__item{display:block;background:#fff;border:1px solid var(--linha);border-radius:var(--r-md);
+    box-shadow:var(--sombra);overflow:hidden}
+  .esp__btn{border-bottom:0;padding:1.15rem 1.15rem .35rem;font-size:1.3rem;gap:.7rem}
+  .esp__btn:hover,.esp__btn[aria-expanded="true"]{padding-left:1.15rem}
+  .esp__btn .seta{opacity:1;width:20px;height:20px;color:var(--acento);transform:rotate(90deg)}
+  .esp__btn[aria-expanded="true"] .seta{transform:rotate(-90deg)}
+  .esp__painel{grid-column:1;grid-row:auto;border:0;border-radius:0;min-height:0;box-shadow:none;
+    padding:var(--s4) 1.15rem 1.35rem;display:none;opacity:1;visibility:visible;transform:none;background:transparent}
+  .esp__painel::before{display:none}
+  .esp__painel.is-on{display:block;animation:abre .3s ease}
+  .esp__num{margin-bottom:var(--s3)}
+  .esp__num b{font-size:2.1rem}
+  .esp__painel h3{font-size:1.35rem;margin-bottom:var(--s3)}
+  .esp__painel p{font-size:1.02rem}
+  .esp__cta{padding-top:var(--s4)}
   .esp__foto{display:none}
   @keyframes abre{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   .passos__lista{grid-template-columns:1fr;gap:var(--s6);padding-left:0}
@@ -410,7 +421,7 @@ a{color:var(--acento)}
       <div class="cabeca rv">
         <p class="eyebrow">O que tratamos</p>
         <h2>Cada especialidade tem um especialista — e todos ficam na mesma clínica.</h2>
-        <p>Escolha o que está te incomodando para ver como o tratamento funciona aqui.</p>
+        <p>O que cada tratamento resolve e como ele funciona aqui dentro.</p>
       </div>
       <div class="esp rv" id="esp">
 
@@ -786,14 +797,34 @@ a{color:var(--acento)}
   const botoes = qa('.esp__btn');
   const painelDe = (btn) => q('#' + btn.getAttribute('aria-controls'));
 
-  const mostrar = (btn) => {
-    botoes.forEach(b => {
-      b.setAttribute('aria-expanded', 'false');
-      painelDe(b).classList.remove('is-on');
-    });
-    btn.setAttribute('aria-expanded', 'true');
-    painelDe(btn).classList.add('is-on');
+  const noCelular = () => innerWidth <= 960;
+
+  const abrir = (btn, aberto) => {
+    btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    painelDe(btn).classList.toggle('is-on', aberto);
   };
+
+  const mostrar = (btn) => {                       // no desktop, um de cada vez
+    botoes.forEach(b => abrir(b, b === btn));
+  };
+
+  // no celular tudo nasce aberto: ninguem precisa descobrir que da para tocar
+  const ajustarPorLargura = () => {
+    if (noCelular()) {
+      botoes.forEach(b => abrir(b, true));
+    } else if (botoes.filter(b => b.getAttribute('aria-expanded') === 'true').length !== 1) {
+      mostrar(botoes[0]);
+    }
+  };
+  ajustarPorLargura();
+  // no celular o 'resize' dispara so de rolar (a barra do navegador some);
+  // por isso reagimos apenas quando a largura muda de verdade
+  let larguraAnterior = innerWidth;
+  addEventListener('resize', () => {
+    if (innerWidth === larguraAnterior) return;
+    larguraAnterior = innerWidth;
+    ajustarPorLargura();
+  });
 
   // passagem automatica: roda sozinha ate a pessoa interagir
   let auto = null;
@@ -804,7 +835,7 @@ a{color:var(--acento)}
     esp.classList.add('is-auto');
   };
   const comecaAuto = () => {
-    if (calmo || auto || innerWidth <= 960) return;
+    if (calmo || auto || noCelular()) return;
     esp.classList.add('is-auto');
     auto = setInterval(() => {
       mostrar(botoes[(ondeEstou() + 1) % botoes.length]);
@@ -822,9 +853,8 @@ a{color:var(--acento)}
 
   botoes.forEach(btn => btn.addEventListener('click', () => {
     assumido = true; pausaAuto();
-    if (innerWidth <= 960 && btn.getAttribute('aria-expanded') === 'true') {
-      btn.setAttribute('aria-expanded', 'false');
-      painelDe(btn).classList.remove('is-on');
+    if (noCelular()) {                             // celular: recolhe so o que foi tocado
+      abrir(btn, btn.getAttribute('aria-expanded') !== 'true');
       return;
     }
     mostrar(btn);
