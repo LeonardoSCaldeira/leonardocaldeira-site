@@ -608,9 +608,9 @@ a{color:var(--acento)}
       </div>
       <div class="esteira rv" id="esteira">
         <div class="esteira__pista" id="pista">
-          <figure><img src="assets/img/atend-03-700.webp" srcset="assets/img/atend-03-420.webp 420w, assets/img/atend-03-700.webp 700w, assets/img/atend-03-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Profissional da clínica recebendo uma paciente na porta do consultório"></figure>
-          <figure><img src="assets/img/equipe-01-700.webp" srcset="assets/img/equipe-01-420.webp 420w, assets/img/equipe-01-700.webp 700w, assets/img/equipe-01-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Dentista de jaleco na sala de atendimento da clínica"></figure>
-          <figure><img src="assets/img/equipe-02-700.webp" srcset="assets/img/equipe-02-420.webp 420w, assets/img/equipe-02-700.webp 700w, assets/img/equipe-02-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Dentista de braços cruzados no consultório da clínica"></figure>
+          <figure><img src="assets/img/atend-03-700.webp" srcset="assets/img/atend-03-420.webp 420w, assets/img/atend-03-700.webp 700w, assets/img/atend-03-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" decoding="async" alt="Profissional da clínica recebendo uma paciente na porta do consultório"></figure>
+          <figure><img src="assets/img/equipe-01-700.webp" srcset="assets/img/equipe-01-420.webp 420w, assets/img/equipe-01-700.webp 700w, assets/img/equipe-01-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" decoding="async" alt="Dentista de jaleco na sala de atendimento da clínica"></figure>
+          <figure><img src="assets/img/equipe-02-700.webp" srcset="assets/img/equipe-02-420.webp 420w, assets/img/equipe-02-700.webp 700w, assets/img/equipe-02-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" decoding="async" alt="Dentista de braços cruzados no consultório da clínica"></figure>
           <figure><img src="assets/img/atend-01-700.webp" srcset="assets/img/atend-01-420.webp 420w, assets/img/atend-01-700.webp 700w, assets/img/atend-01-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Procedimento odontológico sendo realizado em um paciente"></figure>
           <figure><img src="assets/img/equipe-03-700.webp" srcset="assets/img/equipe-03-420.webp 420w, assets/img/equipe-03-700.webp 700w, assets/img/equipe-03-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Dentista sentado no consultório ao lado do equipamento"></figure>
           <figure><img src="assets/img/equipe-05-700.webp" srcset="assets/img/equipe-05-420.webp 420w, assets/img/equipe-05-700.webp 700w, assets/img/equipe-05-1000.webp 1000w" sizes="(max-width:960px) 70vw, 32vw" width="700" height="466" loading="lazy" decoding="async" alt="Dois profissionais da equipe na clínica"></figure>
@@ -909,6 +909,19 @@ a{color:var(--acento)}
       pista.append(copia);
     });
   }
+
+  // o navegador nao reavalia loading="lazy" quando o elemento anda por transform:
+  // as fotos fora da tela nunca seriam pedidas. Ao chegar perto, pedimos todas.
+  const esteira = q('#esteira');
+  let esteiraPronta = false;
+  const acordarEsteira = () => {
+    if (esteiraPronta || !esteira || !naTela(esteira, 0.01)) return;
+    esteiraPronta = true;
+    qa('img', pista).forEach(img => { img.loading = 'eager'; });
+  };
+  addEventListener('scroll', acordarEsteira, { passive: true });
+  acordarEsteira();
+  setTimeout(acordarEsteira, 600);
 
   /* -------------------------------------------- vídeos sob demanda ----- */
   qa('.depo__play').forEach(btn => btn.addEventListener('click', () => {
