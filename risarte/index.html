@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Risarte Odontologia — clínica multidisciplinar no Centro de Londrina</title>
-<meta name="description" content="Ortodontia, implante, estética, reabilitação oral, tratamento de canal e cirurgia na mesma clínica, no Centro de Londrina. Agende sua avaliação pelo WhatsApp.">
+<title>Risarte Odontologia Londrina</title>
+<meta name="description" content="A Risarte Odontologia acredita que um sorriso pode transformar tudo. Clínica multidisciplinar em Londrina, com especialistas com mais de 10 anos de experiência.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://leonardocaldeira.com/risarte/">
 <meta name="theme-color" content="#0A2E38">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Risarte Odontologia">
-<meta property="og:title" content="Risarte Odontologia — clínica multidisciplinar em Londrina">
-<meta property="og:description" content="Seis especialidades na mesma clínica, no Centro de Londrina. Agende sua avaliação pelo WhatsApp.">
+<meta property="og:title" content="Risarte Odontologia Londrina">
+<meta property="og:description" content="Uma Clínica Multidisciplinar Para atender você e toda SUA FAMÍLIA.">
 <meta property="og:url" content="https://leonardocaldeira.com/risarte/">
 <meta property="og:image" content="https://leonardocaldeira.com/risarte/assets/img/equipe-05-1000.webp">
 <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +48,7 @@ body::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;z-index:2
 body{margin:0;background:var(--branco);color:var(--corpo);font:400 1.0625rem/1.65 var(--texto);
   text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
-h1,h2,h3{font-family:var(--display);color:var(--tinta);font-weight:600;line-height:1.1;
+h1,h2,h3{font-family:var(--display);color:var(--tinta);font-weight:600;line-height:1.1;overflow-wrap:break-word;
   letter-spacing:-.028em;margin:0;text-wrap:balance}
 h1{font-size:clamp(2.15rem,1.05rem + 3.5vw,3.35rem);line-height:1.09}
 h2{font-size:clamp(1.85rem,1.15rem + 2.6vw,2.9rem)}
@@ -167,28 +167,6 @@ a{color:var(--acento)}
 .esp__num b{font:600 2.5rem/.85 var(--display);color:var(--acento);letter-spacing:-.04em}
 .esp__num i{font:600 .72rem/1 var(--texto);letter-spacing:.18em;font-style:normal;text-transform:uppercase;color:var(--acento)}
 .esp__foto{margin-top:var(--s5);border-radius:var(--r-sm);width:100%;flex:0 0 auto;height:clamp(140px,13vw,185px);object-fit:cover;object-position:50% 22%}
-.esp__cta{margin-top:auto;padding-top:var(--s5);display:inline-flex;align-items:center;gap:.5rem;align-self:flex-start;
-  font-weight:600;color:var(--acento);text-decoration:none}
-.esp__cta svg{width:18px;height:18px;transition:transform .2s ease}
-.esp__cta:hover{text-decoration:underline}
-.esp__cta:hover svg{transform:translateX(4px)}
-
-/* ------------------------------------------------ assinatura: consulta */
-.passos{position:relative;margin-top:var(--s8)}
-.passos{--p:0}
-.passos__trilho{position:absolute;left:35px;right:calc((100% - 4.5rem)/4 - 35px);top:35px;height:1px;background:rgba(194,169,120,.28)}
-.passos__prog{display:block;height:100%;background:linear-gradient(90deg,var(--dourado-luz),#A98F5E);
-  transform:scaleX(var(--p));transform-origin:left center;transition:transform .25s linear}
-.passos__lista{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5);list-style:none;margin:0;padding:0;position:relative}
-.passo__bolha{width:70px;height:70px;border-radius:50%;background:#123F4C;color:#fff;display:grid;place-items:center;
-  font-family:var(--display);font-weight:600;font-size:1.55rem;line-height:1;position:relative;z-index:1;
-  box-shadow:inset 0 0 0 1px rgba(194,169,120,.35);
-  transition:transform .45s cubic-bezier(.34,1.56,.64,1),background-color .45s ease,box-shadow .45s ease}
-.passo.is-on .passo__bolha{background:var(--dourado-luz);color:var(--tinta);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 12px 28px -14px rgba(194,169,120,.85);transform:scale(1.05)}
-.passo h3{margin:var(--s5) 0 var(--s3);font-size:1.2rem}
-.passo p{font-size:.98rem;margin:0;max-width:26ch}
-
 /* ---------------------------------------------------------------- clínica */
 .clinica{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
 .clinica p{font-size:1.08rem}
@@ -315,16 +293,7 @@ a{color:var(--acento)}
   .esp__num b{font-size:2.1rem}
   .esp__painel h3{font-size:1.35rem;margin-bottom:var(--s3)}
   .esp__painel p{font-size:1.02rem}
-  .esp__cta{padding-top:var(--s4)}
   .esp__foto{display:none}
-  @keyframes abre{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-  .passos__lista{grid-template-columns:1fr;gap:var(--s6);padding-left:0}
-  .passo{display:grid;grid-template-columns:70px 1fr;gap:var(--s4);align-items:start}
-  .passo h3{margin:0 0 var(--s2)}
-  .passo p{max-width:none}
-  .passos__trilho{left:35px;right:auto;top:35px;bottom:35px;width:1px;height:auto}
-  .passos__prog{width:100%;transform:scaleY(var(--p));transform-origin:center top;
-    background:linear-gradient(180deg,var(--dourado-luz),#A98F5E)}
   .depo-grid{grid-template-columns:1fr;gap:var(--s6)}
   .depos{grid-template-columns:1fr 1fr;gap:var(--s4)}
   .depo__play{padding:var(--s4)}
@@ -363,7 +332,6 @@ a{color:var(--acento)}
     <nav aria-label="Seções da página">
       <ul class="menu" id="menu">
         <li><a href="#especialidades">Especialidades</a></li>
-        <li><a href="#primeira-consulta">Primeira consulta</a></li>
         <li><a href="#clinica">A clínica</a></li>
         <li><a href="#depoimentos">Depoimentos</a></li>
         <li><a href="#contato">Contato</a></li>
@@ -371,7 +339,7 @@ a{color:var(--acento)}
     </nav>
     <a class="btn btn--wa" href="https://wa.me/5543996048288?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
-      Agendar pelo WhatsApp
+      AGENDAR CONSULTA
     </a>
     <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
@@ -385,21 +353,18 @@ a{color:var(--acento)}
   <section class="hero">
     <div class="wrap hero__grid">
       <div>
-        <p class="eyebrow">Clínica odontológica no Centro de Londrina</p>
-        <h1><span class="ln"><span>Uma clínica multidisciplinar</span></span><span class="ln"><span>para atender você</span></span><span class="ln"><span>e toda <em>a sua família</em>.</span></span></h1>
-        <p class="hero__lead">Ortodontia, implante, estética, reabilitação oral, tratamento de canal e cirurgia
-          no mesmo lugar. Você não precisa procurar outro consultório a cada etapa do tratamento.</p>
+        <h1><span class="ln"><span>Uma Clínica Multidisciplinar</span></span><span class="ln"><span>Para atender você</span></span><span class="ln"><span>e toda <em>SUA FAMÍLIA</em></span></span></h1>
+        <p class="hero__lead">Contamos com os profissionais que são especialista em transformar sorrisos em arte!</p>
         <div class="hero__acoes">
-          <a class="btn btn--wa" href="https://wa.me/5543996048288?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
+          <a class="btn btn--wa" href="https://wa.me/5543996048288?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Risarte!" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
-            Agendar pelo WhatsApp
+            AGENDAR CONSULTA
           </a>
-          <a class="btn btn--ghost" href="#especialidades">Ver as especialidades</a>
+          <a class="btn btn--ghost" href="#especialidades">Especialidades</a>
         </div>
         <ul class="selos">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> R. Mato Grosso, 1858 — Centro</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg> Mais de 10 anos de clínica</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg> Atendimento por WhatsApp</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg> R. Mato Grosso, 1858 - Centro, Londrina</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7v5l3 2"/><circle cx="12" cy="12" r="9"/></svg> (43) 9 9604-8288</li>
         </ul>
       </div>
       <div class="hero__foto">
@@ -409,7 +374,7 @@ a{color:var(--acento)}
              alt="Dois profissionais da Risarte Odontologia lado a lado na clínica">
         <div class="hero__nota">
           <strong>+10</strong>
-          <span>anos atendendo famílias de Londrina</span>
+          <span>anos de experiência</span>
         </div>
       </div>
     </div>
@@ -419,160 +384,89 @@ a{color:var(--acento)}
   <section class="secao secao--gelo" id="especialidades">
     <div class="wrap">
       <div class="cabeca rv">
-        <p class="eyebrow">O que tratamos</p>
-        <h2>Cada especialidade tem um especialista — e todos ficam na mesma clínica.</h2>
-        <p>O que cada tratamento resolve e como ele funciona aqui dentro.</p>
+        <p class="eyebrow">Nossas</p>
+        <h2>ESPECIALIDADES</h2>
       </div>
       <div class="esp rv" id="esp">
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b1" aria-expanded="true" aria-controls="esp-p1">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Ortodontia
+            ODONTOLOGIA PREVENTIVA
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel is-on" id="esp-p1" role="region" aria-labelledby="esp-b1">
             <span class="esp__num"><b>01</b><i>de 06</i></span>
-            <h3>Aparelho escolhido pelo seu caso, não pela moda</h3>
-            <p>Trabalhamos com todos os tipos: metálico, estético, autoligado (aquele sem borrachinha) e alinhador
-              transparente Invisalign. Qual entra no seu tratamento é decisão da avaliação — cada boca responde de um jeito.</p>
-            <p>Se você já usou aparelho antes e o dente voltou a se mover, traga a documentação antiga na primeira consulta.</p>
+            <p>Contamos com os mais avançados e tecnológicos aparelhos dentais. Especialistas sempre atualizados para transformar o seu sorriso com o que tem de melhor na ortodontia. Utilizamos todos os tipos de aparelhos: Metálicos e Estéticos, e até as formas mais modernas de aparelhos como os sem as borrachinhas (autoligados) e também as sequencias de placas alinhadoras invisíveis (Invisalign).</p>
             <img class="esp__foto" src="assets/img/atend-01-700.webp" srcset="assets/img/atend-01-420.webp 420w, assets/img/atend-01-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Procedimento odontológico em andamento na clínica">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20de%20ortodontia.">Agendar avaliação de ortodontia <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b2" aria-expanded="false" aria-controls="esp-p2">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Implantodontia
+            IMPLANTODONTIA
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel" id="esp-p2" role="region" aria-labelledby="esp-b2">
             <span class="esp__num"><b>02</b><i>de 06</i></span>
-            <h3>Dente que falta, mordida que volta</h3>
-            <p>O implante repõe o dente perdido ou ausente devolvendo a função da mordida e a aparência do dente
-              natural — a ponto de se confundir com os que estão do lado.</p>
-            <p>O planejamento é feito com a mesma equipe que acompanha o restante do seu tratamento, então implante,
-              canal e prótese não viram três consultórios diferentes.</p>
+            <p>A implantodontia restaura sorrisos, substituindo dentes perdidos ou ausentes com implantes que imitam a aparência e função dos naturais. A Risarte Odontologia utiliza tecnologias avançadas para soluções rápidas, seguras e eficazes, garantindo resultados que se confundem com os dentes originais.</p>
             <img class="esp__foto" src="assets/img/equipe-03-700.webp" srcset="assets/img/equipe-03-420.webp 420w, assets/img/equipe-03-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Dentista no consultório ao lado do equipamento">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20implante.">Agendar avaliação de implante <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b3" aria-expanded="false" aria-controls="esp-p3">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Estética
+            ESTÉTICA
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel" id="esp-p3" role="region" aria-labelledby="esp-b3">
             <span class="esp__num"><b>03</b><i>de 06</i></span>
-            <h3>O que te incomoda no espelho tem nome e tem tratamento</h3>
-            <p>Cor, forma e proporção dos dentes são avaliadas antes de qualquer procedimento. O que faz sentido no seu
-              caso sai da avaliação — não de um pacote pronto.</p>
-            <p>Conte na primeira consulta o que você gostaria de mudar. É a partir daí que o plano é montado.</p>
+            <p>Nossos tratamentos avançados, são projetados para proporcionar resultados excepcionais. Experimente o melhor em cuidados dentários e descubra como podemos realçar a beleza do seu sorriso.</p>
             <img class="esp__foto" src="assets/img/equipe-04-700.webp" srcset="assets/img/equipe-04-420.webp 420w, assets/img/equipe-04-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Ambiente de atendimento da clínica">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20de%20est%C3%A9tica.">Agendar avaliação de estética <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b4" aria-expanded="false" aria-controls="esp-p4">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Reabilitação oral
+            REABILITAÇÃO ORAL
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel" id="esp-p4" role="region" aria-labelledby="esp-b4">
             <span class="esp__num"><b>04</b><i>de 06</i></span>
-            <h3>Quando o problema não é um dente só</h3>
-            <p>Mastigar de um lado só, evitar alimentos duros, falar diferente: quando a função se perde, os
-              especialistas da clínica avaliam juntos e devolvem o que faltou.</p>
-            <p>Depois da avaliação, você recebe um plano dividido em etapas — dá para ver o caminho inteiro antes
-              de começar.</p>
+            <p>A reabilitação oral na clínica é realizada por especialistas que trabalham juntos para restaurar funções da saúde bucal. Após avaliação, desenvolvemos um plano personalizado em etapas para garantir os melhores resultados.</p>
             <img class="esp__foto" src="assets/img/equipe-01-700.webp" srcset="assets/img/equipe-01-420.webp 420w, assets/img/equipe-01-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Dentista na sala de atendimento">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20de%20reabilita%C3%A7%C3%A3o%20oral.">Agendar avaliação de reabilitação oral <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b5" aria-expanded="false" aria-controls="esp-p5">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Tratamento de canal
+            TRATAMENTO DE CANAL
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel" id="esp-p5" role="region" aria-labelledby="esp-b5">
             <span class="esp__num"><b>05</b><i>de 06</i></span>
-            <h3>Salvar o dente em vez de perder o dente</h3>
-            <p>O canal repara dentes muito danificados ou inflamados: remoção da parte inflamada, limpeza, desinfecção,
-              preenchimento e selamento.</p>
-            <p>Com a tecnologia que usamos hoje, muitos casos se resolvem em uma única sessão.</p>
+            <p>O tratamento de canal consiste em reparar e salvar dentes muito danificados ou inflamados. O procedimento envolve a remoção da área inflamada do dente seguido de limpeza, desinfecção, preenchimento e selamento. Com tecnologia moderna, oferecemos procedimentos mais eficientes e seguros, muitas vezes resolvendo casos em uma única sessão.</p>
             <img class="esp__foto" src="assets/img/atend-02-700.webp" srcset="assets/img/atend-02-420.webp 420w, assets/img/atend-02-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Profissional atendendo uma paciente">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20tratamento%20de%20canal.">Agendar avaliação de canal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
         <article class="esp__item">
           <button class="esp__btn" id="esp-b6" aria-expanded="false" aria-controls="esp-p6">
             <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 20.5 12 12 20.5 3.5 12 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            Cirurgia
+            CIRURGIA
             <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
           <div class="esp__painel" id="esp-p6" role="region" aria-labelledby="esp-b6">
             <span class="esp__num"><b>06</b><i>de 06</i></span>
-            <h3>Procedimentos cirúrgicos na própria clínica</h3>
-            <p>As cirurgias são feitas pelos dentistas da casa, na estrutura da clínica, com o mesmo time que fez a
-              avaliação e vai acompanhar a recuperação.</p>
-            <p>Se você já ouviu de outro consultório que o caso é cirúrgico, traga o raio-x na avaliação.</p>
+            <p>Na Risarte Odontologia, oferecemos uma variedade de procedimentos odontológicos realizados por dentistas experientes e que realmente irão te ajudar a ter um novo sorriso.</p>
             <img class="esp__foto" src="assets/img/equipe-05-700.webp" srcset="assets/img/equipe-05-420.webp 420w, assets/img/equipe-05-700.webp 700w" sizes="46vw" width="700" height="466" loading="lazy" decoding="async" alt="Dois profissionais da equipe na clínica">
-            <a class="esp__cta" target="_blank" rel="noopener" href="https://wa.me/5543996048288?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20cir%C3%BArgica.">Agendar avaliação cirúrgica <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ------------------------------------------- ASSINATURA: A CONSULTA -->
-  <section class="secao secao--tinta" id="primeira-consulta">
-    <div class="wrap">
-      <div class="cabeca rv">
-        <p class="eyebrow">Antes de marcar</p>
-        <h2>Como é a sua primeira consulta aqui</h2>
-        <p>Quatro etapas, nenhuma surpresa. Você sabe o que vai acontecer antes de sentar na cadeira.</p>
-      </div>
-      <div class="passos" id="passos">
-        <div class="passos__trilho" aria-hidden="true"><span class="passos__prog"></span></div>
-        <ol class="passos__lista">
-          <li class="passo">
-            <div class="passo__bolha" aria-hidden="true">1</div>
-            <div>
-              <h3>Você chama no WhatsApp</h3>
-              <p>Conta o que está incomodando. A gente responde no mesmo canal e combina o horário.</p>
-            </div>
-          </li>
-          <li class="passo">
-            <div class="passo__bolha" aria-hidden="true">2</div>
-            <div>
-              <h3>Avaliação na clínica</h3>
-              <p>O especialista examina, explica o que encontrou e responde suas dúvidas antes de qualquer procedimento.</p>
-            </div>
-          </li>
-          <li class="passo">
-            <div class="passo__bolha" aria-hidden="true">3</div>
-            <div>
-              <h3>Plano dividido em etapas</h3>
-              <p>Você recebe o tratamento organizado por etapas, com o que é prioridade separado do que pode esperar.</p>
-            </div>
-          </li>
-          <li class="passo">
-            <div class="passo__bolha" aria-hidden="true">4</div>
-            <div>
-              <h3>Tratamento com a mesma equipe</h3>
-              <p>As etapas seguem dentro da clínica, com os mesmos profissionais do começo ao fim.</p>
-            </div>
-          </li>
-        </ol>
       </div>
     </div>
   </section>
@@ -581,19 +475,23 @@ a{color:var(--acento)}
   <section class="secao" id="clinica">
     <div class="wrap clinica">
       <div class="rv">
-        <p class="eyebrow">A clínica</p>
-        <h2>Estrutura pensada para quem tem medo de dentista.</h2>
-        <p>A Risarte fica no Centro de Londrina e reúne, no mesmo endereço, os especialistas de cada área e os
-          equipamentos que cada tratamento exige. Isso encurta o caminho: avaliação, plano e execução acontecem no
-          mesmo lugar, com as mesmas pessoas.</p>
-        <p>São mais de 10 anos atendendo famílias da cidade. Consultórios equipados, ambiente tranquilo e uma equipe
-          que explica o que está fazendo enquanto faz — porque saber o que vem a seguir é metade do desconforto.</p>
-        <a class="btn btn--marca" href="#contato">Agendar minha avaliação</a>
+        <p class="eyebrow">Estrutura da</p>
+        <h2>CLÍNICA ODONTOLÓGICA</h2>
+        <p><strong>A Risarte Odontologia, acredita que um sorriso pode transformar tudo.</strong></p>
+        <p>É por isso que nossa clínica em Londrina é dedicada à arte de criar sorrisos que irradiam
+          felicidade e confiança. Com uma equipe de especialistas com mais de 10 anos de experiência,
+          estamos na vanguarda das técnicas odontológicas, garantindo que você receba o cuidado mais
+          eficiente e confortável possível.</p>
+        <p>Nossas clínicas modernas e bem equipadas são projetadas pensando em você, oferecendo não apenas
+          tratamentos de ponta, mas também uma experiência acolhedora e reconfortante.</p>
+        <p>Ver o sorriso dos nossos clientes após um tratamento é a maior recompensa, pois sabemos que não
+          estamos apenas transformando sorrisos, mas vidas.</p>
+        <a class="btn btn--marca" href="https://wa.me/5543996048288?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Risarte!" target="_blank" rel="noopener">AGENDAR CONSULTA</a>
       </div>
       <div class="salas rv">
-        <figure><img src="assets/img/sala-01-480.webp" width="480" height="214" loading="lazy" decoding="async" alt="Sala de atendimento da clínica com mesa, cadeiras e televisão"><figcaption>Recepção</figcaption></figure>
-        <figure><img src="assets/img/sala-02-480.webp" width="480" height="238" loading="lazy" decoding="async" alt="Corredor interno da clínica com plantas e armários"><figcaption>Estrutura</figcaption></figure>
-        <figure><img src="assets/img/sala-03-480.webp" width="480" height="267" loading="lazy" decoding="async" alt="Consultório com cadeira odontológica e equipamentos"><figcaption>Consultório</figcaption></figure>
+        <figure><img src="assets/img/sala-01-480.webp" width="480" height="214" loading="lazy" decoding="async" alt="Sala de atendimento da clínica com mesa, cadeiras e televisão"><figcaption>Conforto</figcaption></figure>
+        <figure><img src="assets/img/sala-02-480.webp" width="480" height="238" loading="lazy" decoding="async" alt="Corredor interno da clínica com plantas e armários"><figcaption>Experiência</figcaption></figure>
+        <figure><img src="assets/img/sala-03-480.webp" width="480" height="267" loading="lazy" decoding="async" alt="Consultório com cadeira odontológica e equipamentos"><figcaption>Qualidade</figcaption></figure>
       </div>
     </div>
   </section>
@@ -602,9 +500,9 @@ a{color:var(--acento)}
   <section class="secao secao--gelo" id="galeria">
     <div class="gal-grid">
       <div class="cabeca rv">
-        <p class="eyebrow">Por dentro do atendimento</p>
-        <h2>A equipe em um dia comum de clínica</h2>
-        <p>Todas as fotos são da própria Risarte, feitas em dias normais de atendimento — nada de banco de imagens.</p>
+        <p class="eyebrow">Especialistas preparados para</p>
+        <h2>TRANSFORMAR O SEU SORRISO</h2>
+        <a class="btn btn--marca" href="https://wa.me/5543996048288?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Risarte!" target="_blank" rel="noopener">AGENDAR CONSULTA</a>
       </div>
       <div class="esteira rv" id="esteira">
         <div class="esteira__pista" id="pista">
@@ -625,10 +523,8 @@ a{color:var(--acento)}
   <section class="secao" id="depoimentos">
     <div class="wrap depo-grid">
       <div class="cabeca rv">
-        <p class="eyebrow">Quem já sentou na cadeira</p>
-        <h2>Pacientes contam como foi</h2>
-        <p>Dois depoimentos gravados na clínica, sem roteiro. O vídeo só carrega quando você toca — para não pesar
-          nos seus dados.</p>
+        <p class="eyebrow">Veja o depoimento de quem</p>
+        <h2>CONFIA EM NOSSOS ESPECIALISTAS</h2>
       </div>
       <div class="depos rv" id="depos">
         <div class="depo">
@@ -636,8 +532,8 @@ a{color:var(--acento)}
           <button class="depo__play" type="button"
                   data-video="https://risarteodontologia.com.br/wp-content/uploads/2024/04/VIDEO-1-1-1.mp4">
             <span class="circ" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span>
-            <b>Assistir ao depoimento</b>
-            <span>Paciente da Risarte · 1min51</span>
+            <b>Depoimento</b>
+            <span>1min51</span>
           </button>
         </div>
         <div class="depo">
@@ -645,8 +541,8 @@ a{color:var(--acento)}
           <button class="depo__play" type="button"
                   data-video="https://risarteodontologia.com.br/wp-content/uploads/2024/04/VIDEO-2-1-1.mp4">
             <span class="circ" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg></span>
-            <b>Assistir ao depoimento</b>
-            <span>Paciente da Risarte · 57s</span>
+            <b>Depoimento</b>
+            <span>57s</span>
           </button>
         </div>
       </div>
@@ -657,14 +553,12 @@ a{color:var(--acento)}
   <section class="secao secao--tinta" id="contato">
     <div class="wrap contato">
       <div class="rv">
-        <p class="eyebrow">Agendar</p>
-        <h2>Conte o que está acontecendo. A gente responde no WhatsApp.</h2>
-        <p>Preencha o formulário e a mensagem abre pronta no seu WhatsApp — você só toca em enviar. Se preferir,
-          use um dos canais abaixo.</p>
+        <h2>Ficou com dúvida diante nossos procedimentos?</h2>
+        <p>Preencha o formulário e entraremos em contato.</p>
         <ul class="dados">
           <li>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
-            <span><a href="https://wa.me/5543996048288?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">(43) 99604-8288</a><br>WhatsApp e telefone</span>
+            <span><a href="https://wa.me/5543996048288?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20o%20M%C3%A9todo%20Risarte!" target="_blank" rel="noopener">(43) 9 9604-8288</a></span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
@@ -672,7 +566,7 @@ a{color:var(--acento)}
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <span>R. Mato Grosso, 1858 — Centro<br>Londrina/PR, 86010-180</span>
+            <span>R. Mato Grosso, 1858 - Centro, Londrina</span>
           </li>
           <li>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
@@ -688,38 +582,30 @@ a{color:var(--acento)}
 
       <form class="form rv" id="form" novalidate>
         <div class="campo">
-          <label for="f-nome">Seu nome</label>
-          <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar" required>
+          <label for="f-nome">Nome:</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" placeholder="João da Silva" required>
           <p class="erro" id="e-nome">Escreva seu nome para a gente saber com quem está falando.</p>
         </div>
         <div class="campo">
-          <label for="f-fone">Seu WhatsApp</label>
-          <span class="dica" id="d-fone">Com DDD, só números.</span>
-          <input id="f-fone" name="fone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="43 99999-9999"
-                 aria-describedby="d-fone" required>
+          <label for="f-fone">DDD + Telefone:</label>
+          <input id="f-fone" name="fone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(99) 9 9999-9999"
+                 required>
           <p class="erro" id="e-fone">Faltou o telefone com DDD — é por ele que a gente retorna.</p>
         </div>
         <div class="campo">
-          <label for="f-assunto">O que você precisa</label>
-          <select id="f-assunto" name="assunto">
-            <option value="Ainda não sei, quero uma avaliação">Ainda não sei, quero uma avaliação</option>
-            <option>Ortodontia (aparelho)</option>
-            <option>Implante</option>
-            <option>Estética</option>
-            <option>Reabilitação oral</option>
-            <option>Tratamento de canal</option>
-            <option>Cirurgia</option>
-          </select>
+        <div class="campo">
+          <label for="f-email">E-mail:</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="joaodasilva@gmail.com">
         </div>
         <div class="campo">
-          <label for="f-msg">Conte o que está incomodando</label>
-          <textarea id="f-msg" name="msg" placeholder="Ex.: um dente do fundo dói quando eu mastigo do lado direito."></textarea>
+          <label for="f-msg">Mensagem:</label>
+          <textarea id="f-msg" name="msg" placeholder="Conte aqui como eu posso te ajudar..."></textarea>
         </div>
         <button class="btn btn--wa" type="submit">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
-          Abrir no WhatsApp
+          Enviar mensagem
         </button>
-        <p class="form__rodape" role="status" id="form-status">Nada é enviado sem você confirmar dentro do WhatsApp.</p>
+        <p class="form__rodape" role="status" id="form-status"></p>
       </form>
     </div>
   </section>
@@ -735,7 +621,7 @@ a{color:var(--acento)}
   </div>
 </footer>
 
-<a class="wa-float" id="wa-float" aria-label="Falar no WhatsApp"
+<a class="wa-float" id="wa-float" aria-label="Agendar consulta pelo WhatsApp"
    href="https://wa.me/5543996048288?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
 </a>
@@ -870,34 +756,16 @@ a{color:var(--acento)}
     naTela(esp, 0.35) ? comecaAuto() : pausaAuto();
   };
 
-  /* ------------------------------- assinatura: linha da primeira consulta */
-  const passos = q('#passos');
-  if (passos) {
-    const etapas = qa('.passo', passos);
-    const desenhar = () => {
-      if (calmo) {
-        passos.style.setProperty('--p', 1);
-        etapas.forEach(e => e.classList.add('is-on'));
-        return;
-      }
-      const r = passos.getBoundingClientRect();
-      const inicio = innerHeight * 0.82;           // comeca quando a secao entra na tela
-      const curso = r.height + innerHeight * 0.25; // termina quando ela sai por cima
-      const t = Math.max(0, Math.min(1, (inicio - r.top) / curso));
-      passos.style.setProperty('--p', t.toFixed(3));
-      etapas.forEach((e, i) => e.classList.toggle('is-on', t >= i / etapas.length));
-    };
-    let ultimo = 0;
-    addEventListener('scroll', () => {             // sem rAF: roda mesmo sem frames
-      const agora = performance.now();
-      if (agora - ultimo < 60) return;
-      ultimo = agora;
-      desenhar(); conferirAuto();
-    }, { passive: true });
-    addEventListener('resize', () => { desenhar(); conferirAuto(); });
-    desenhar();
-    setTimeout(() => { desenhar(); conferirAuto(); }, 400);
-  }
+  // a esteira e as especialidades reagem a rolagem sem depender de rAF
+  let ultimoScroll = 0;
+  addEventListener('scroll', () => {
+    const agora = performance.now();
+    if (agora - ultimoScroll < 60) return;
+    ultimoScroll = agora;
+    conferirAuto();
+  }, { passive: true });
+  addEventListener('resize', conferirAuto);
+  setTimeout(conferirAuto, 400);
 
   /* --------------------------------------------------------- esteira ---- */
   // a esteira roda em loop continuo: duplico os cartoes para a emenda nao aparecer
@@ -933,10 +801,12 @@ a{color:var(--acento)}
   }));
 
   /* ------------------------------------- nenhuma palavra sozinha na linha */
-  const semOrfa = () => qa('h1, h2, h3, p, li, figcaption, .depo__play span, .hero__nota span').forEach(el => {
+  const semOrfa = () => qa('p:not(.eyebrow), li, figcaption, .depo__play span, .hero__nota span').forEach(el => {
     const textos = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim());
     const ultimo = textos[textos.length - 1];
     if (!ultimo) return;
+    // titulo fica com text-wrap:balance; aqui so parágrafo, onde a órfã incomoda de fato
+    if (el.innerText.trim().split(/\s+/).length < 4) return;
     ultimo.textContent = ultimo.textContent.replace(/\s+(\S+)\s*$/, '\u00A0$1');
   });
   semOrfa();
@@ -963,10 +833,11 @@ a{color:var(--acento)}
       q(eNome ? '#f-nome' : '#f-fone').focus();
       return;
     }
-    const assunto = q('#f-assunto').value;
+    const email = q('#f-email').value.trim();
     const msg = q('#f-msg').value.trim();
-    const texto = `Olá! Meu nome é ${nome}.\nMotivo: ${assunto}.\nMeu WhatsApp: ${fone}.`
-      + (msg ? `\n\n${msg}` : '') + '\n\n(enviado pelo site)';
+    const texto = `Olá! Meu nome é ${nome}.\nTelefone: ${fone}.`
+      + (email ? `\nE-mail: ${email}.` : '')
+      + (msg ? `\n\n${msg}` : '');
     status.textContent = 'Abrindo o WhatsApp com sua mensagem pronta…';
     open('https://wa.me/5543996048288?text=' + encodeURIComponent(texto), '_blank', 'noopener');
   });
