@@ -1,0 +1,365 @@
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta Risarte</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400..700&family=Figtree:wght@400..600&display=swap');
+
+  :root{
+    --tinta:#0A2E38; --corpo:#3F5860; --acento:#0A6D82; --acento-claro:#2FA9C9;
+    --dourado:#C2A978; --gelo:#F2F8FA; --papel:#FFFFFF; --linha:#DCE7EB;
+    --alerta:#B3261E; --alerta-fundo:#FDF4F3; --ok:#0E7A41;
+    --sombra:0 1px 2px rgba(10,46,56,.04), 0 18px 46px -26px rgba(10,46,56,.45);
+    --display:'Archivo',system-ui,'Segoe UI',sans-serif;
+    --texto:'Figtree',system-ui,'Segoe UI',sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --tinta:#EAF3F6; --corpo:#A8C0C8; --acento:#5FC6DE; --acento-claro:#2FA9C9;
+      --gelo:#0D2731; --papel:#0A1F27; --linha:#1E3F4A;
+      --alerta:#FF9A92; --alerta-fundo:#2A1614;
+      --sombra:0 1px 2px rgba(0,0,0,.3), 0 18px 46px -26px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --tinta:#EAF3F6; --corpo:#A8C0C8; --acento:#5FC6DE; --acento-claro:#2FA9C9;
+    --gelo:#0D2731; --papel:#0A1F27; --linha:#1E3F4A;
+    --alerta:#FF9A92; --alerta-fundo:#2A1614;
+    --sombra:0 1px 2px rgba(0,0,0,.3), 0 18px 46px -26px rgba(0,0,0,.8);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--papel);color:var(--corpo);
+    font:400 1.0625rem/1.7 var(--texto);-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);color:var(--tinta);font-weight:600;
+    line-height:1.12;letter-spacing:-.028em;margin:0;text-wrap:balance}
+  h1{font-size:clamp(2rem,1.1rem + 3.2vw,3.1rem)}
+  h2{font-size:clamp(1.5rem,1rem + 1.9vw,2.1rem);margin-bottom:.75rem}
+  h3{font-size:1.15rem;letter-spacing:-.018em}
+  p{margin:0 0 1rem;text-wrap:pretty}
+  strong{color:var(--tinta);font-weight:600}
+  a{color:var(--acento)}
+  .wrap{width:min(100% - 2.5rem,52rem);margin-inline:auto}
+  section{padding:clamp(2.5rem,6vw,4rem) 0;border-top:1px solid var(--linha)}
+  section:first-of-type{border-top:0}
+  .rot{font:600 .72rem/1 var(--texto);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--acento);margin:0 0 1rem;display:flex;align-items:center;gap:.7rem}
+  .rot::after{content:"";height:1px;flex:1;max-width:4rem;
+    background:linear-gradient(90deg,var(--acento),transparent)}
+
+  /* ---------------------------------------------------------------- capa */
+  header{background:var(--gelo);padding:clamp(2.5rem,7vw,4.5rem) 0 clamp(2rem,5vw,3rem);
+    border-bottom:1px solid var(--linha)}
+  header p.lead{font-size:1.15rem;max-width:44ch;margin-top:1.25rem}
+  .quem{font:600 .8rem/1.5 var(--texto);letter-spacing:.05em;color:var(--corpo);
+    margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--linha)}
+
+  /* ------------------------------------------------------------ medidores */
+  .notas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1.25rem;margin:2rem 0 .5rem}
+  .nota{background:var(--papel);border:1px solid var(--linha);border-radius:16px;
+    padding:1.25rem;text-align:center;box-shadow:var(--sombra)}
+  .nota svg{width:104px;height:104px;display:block;margin:0 auto .6rem}
+  .nota b{display:block;font:600 .95rem/1.3 var(--texto);color:var(--tinta)}
+  .nota span{font-size:.85rem;line-height:1.4;display:block;margin-top:.15rem}
+  .arco-fundo{stroke:var(--linha)}
+  .valor{font-family:var(--display);font-weight:600;font-size:30px;fill:var(--tinta)}
+
+  /* ------------------------------------------------------------- achados */
+  .achado{background:var(--papel);border:1px solid var(--linha);border-left:3px solid var(--alerta);
+    border-radius:12px;padding:1.15rem 1.25rem;margin-bottom:1rem}
+  .achado h3{margin-bottom:.35rem}
+  .achado p{margin:0;font-size:1rem}
+  .achado .prova{display:block;margin-top:.6rem;font-size:.9rem;color:var(--acento);font-weight:600}
+
+  /* ------------------------------------------------------------- tabela */
+  .tab{width:100%;border-collapse:collapse;font-size:1rem;margin-top:1.5rem}
+  .tab th,.tab td{text-align:left;padding:.85rem .6rem;border-bottom:1px solid var(--linha);
+    vertical-align:top}
+  .tab thead th{font:600 .74rem/1.3 var(--texto);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--corpo)}
+  .tab td:first-child{color:var(--tinta);font-weight:500;width:38%}
+  .tab td:last-child{color:var(--tinta);font-weight:600}
+  .rolavel{overflow-x:auto}
+
+  /* --------------------------------------------------------------- listas */
+  ul.limpa{list-style:none;padding:0;margin:0;display:grid;gap:.85rem}
+  ul.limpa li{display:flex;gap:.7rem;align-items:flex-start}
+  ul.limpa svg{width:20px;height:20px;flex:none;margin-top:.28rem;color:var(--acento)}
+  .duas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,2.5rem)}
+  .cartao{background:var(--gelo);border-radius:16px;padding:1.5rem}
+  .cartao h3{margin-bottom:.75rem}
+
+  /* --------------------------------------------------------------- final */
+  .fecho{background:#0A2E38;color:#CFE0E5;border-radius:20px;padding:clamp(1.75rem,4vw,2.5rem);
+    margin:1rem 0 0}
+  .fecho h2{color:#fff}
+  .fecho a.btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ok);color:#fff;
+    text-decoration:none;font:600 1.05rem/1 var(--texto);padding:1.05rem 1.6rem;border-radius:999px;
+    margin-top:.75rem}
+  .fecho .obs{font-size:.92rem;opacity:.85;margin:1.25rem 0 0}
+  .preencher{background:var(--alerta-fundo);border:1px dashed var(--alerta);color:var(--alerta);
+    border-radius:10px;padding:.85rem 1rem;font-size:.92rem;font-weight:600}
+  footer{padding:2.5rem 0 3.5rem;font-size:.9rem;color:var(--corpo)}
+
+  @media (max-width:640px){
+    .duas{grid-template-columns:1fr}
+    .tab td:first-child{width:46%}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <p class="rot">Proposta · Agosto de 2026</p>
+    <h1>Vocês pagam pelo clique. Ele chega numa página que o Google não aprova.</h1>
+    <p class="lead">A Risarte é o <strong>primeiro anúncio patrocinado</strong> em "clínica odontológica
+      Londrina". Cada clique desse anúncio é pago — e cai numa página que o próprio Google mede em
+      <strong>56 e 66 de 100</strong> no celular, em dois dias seguidos. Para o Google, só é bom a partir
+      de 90. Este documento mostra o que está travando e o que já está pronto para resolver.</p>
+    <p class="quem">Leonardo Caldeira · Desenvolvimento de sites<br>
+      Para: Risarte Odontologia — R. Mato Grosso, 1858, Centro, Londrina</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="rot">O diagnóstico</p>
+    <h2>O teste oficial do Google, feito no site de vocês</h2>
+    <p>Qualquer pessoa refaz esse teste em 30 segundos em <strong>pagespeed.web.dev</strong>. A nota
+      oscila de uma medição para outra — por isso medimos em dois dias. O que não muda é a faixa: o Google
+      considera <strong>ruim abaixo de 50</strong>, <strong>a melhorar entre 50 e 89</strong> e
+      <strong>bom a partir de 90</strong>.</p>
+
+    <div class="notas">
+      <div class="nota">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Nota 56 de 100 no celular">
+          <circle class="arco-fundo" cx="60" cy="60" r="50" fill="none" stroke-width="9"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#E8A33D" stroke-width="9"
+                  stroke-linecap="round" stroke-dasharray="176 314" transform="rotate(-90 60 60)"/>
+          <text class="valor" x="60" y="70" text-anchor="middle">56</text>
+        </svg>
+        <b>Site atual · celular</b>
+        <span>medição de 20/08</span>
+      </div>
+      <div class="nota">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Nota 66 de 100 no celular, medição de 21 de agosto">
+          <circle class="arco-fundo" cx="60" cy="60" r="50" fill="none" stroke-width="9"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#E8A33D" stroke-width="9"
+                  stroke-linecap="round" stroke-dasharray="207 314" transform="rotate(-90 60 60)"/>
+          <text class="valor" x="60" y="70" text-anchor="middle">66</text>
+        </svg>
+        <b>Site atual · celular</b>
+        <span>medição de 21/08</span>
+      </div>
+      <div class="nota">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Nota 100 de 100 na página nova">
+          <circle class="arco-fundo" cx="60" cy="60" r="50" fill="none" stroke-width="9"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#0E7A41" stroke-width="9"
+                  stroke-linecap="round" stroke-dasharray="314 314" transform="rotate(-90 60 60)"/>
+          <text class="valor" x="60" y="70" text-anchor="middle">100</text>
+        </svg>
+        <b>Página nova</b>
+        <span>celular e computador</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rot">Quatro coisas que custam paciente</p>
+    <h2>Não são opinião de design. São defeitos verificáveis.</h2>
+
+    <div class="achado">
+      <h3>O anúncio é pago por clique; a página perde parte desses cliques</h3>
+      <p>Vocês estão no topo dos <strong>Resultados Patrocinados</strong> — a posição é comprada, clique
+        a clique. Quando a página que recebe esse clique demora a abrir no celular, parte do dinheiro do
+        anúncio vai embora antes de a pessoa ver qualquer coisa. É o único gasto da clínica que some sem
+        deixar rastro: o paciente volta para a busca e clica no concorrente logo abaixo.</p>
+      <span class="prova">O segundo anunciante da mesma busca é a Realiza Odontologia.</span>
+    </div>
+
+    <div class="achado">
+      <h3>O telefone da área de contato não abre conversa</h3>
+      <p>O número clicável ao lado do ícone do WhatsApp, na seção de contato, está cadastrado como
+        <strong>555543996048288</strong> — um "55" a mais. Quem toca nele recebe a mensagem de número
+        inválido e volta para a busca. Os outros botões da página estão certos, e o link do Instagram
+        de vocês também: só esse ficou para trás, o que sugere que ninguém percebeu até hoje.</p>
+      <span class="prova">Confira: abra o site, vá até o rodapé e toque no telefone.</span>
+    </div>
+
+    <div class="achado">
+      <h3>Uma frase do formulário está branca sobre fundo branco</h3>
+      <p>A linha "Preencha o formulário e entraremos em contato", logo abaixo do título, é invisível
+        para qualquer pessoa. É o texto que explica o que acontece depois do envio — justamente
+        onde a pessoa decide se preenche ou desiste.</p>
+      <span class="prova">Confira: selecione a área com o cursor e a frase aparece.</span>
+    </div>
+
+    <div class="achado">
+      <h3>Os dois depoimentos somam 380 MB</h3>
+      <p>Os vídeos estão no site sem compressão nenhuma: <strong>226 MB</strong> e <strong>154 MB</strong>.
+        Um vídeo de 1min51 bem comprimido tem cerca de 15 MB. Quem tenta assistir no 4G queima o
+        pacote de dados e desiste antes de carregar.</p>
+      <span class="prova">São os depoimentos gravados na própria clínica — o conteúdo é bom, o arquivo é que está errado.</span>
+    </div>
+
+    <div class="achado">
+      <h3>O conteúdo que vocês produzem não chega ao site</h3>
+      <p>No Instagram são 530 publicações, destaques de <strong>Antes e Depois</strong>, de
+        <strong>Pacientes</strong> e o <strong>Dr responde</strong>, além dos vídeos explicando cada
+        tratamento. Quem chega pelo anúncio não vê nada disso: o site não mostra caso nenhum, não traz
+        o programa de prevenção da clínica e esconde os depoimentos dentro de dois vídeos que quase
+        ninguém consegue abrir. O trabalho de comunicação já está feito — ele só não está onde o
+        paciente decide.</p>
+      <span class="prova">O mesmo vale para o Programa de Prevenção da Risarte: existe no Instagram, não existe no site.</span>
+    </div>
+
+    <div class="achado">
+      <h3>O link de vocês compartilhado no WhatsApp aparece sem nada</h3>
+      <p>A página não tem descrição nem imagem de compartilhamento configuradas. Quando um paciente
+        manda o site para um familiar, chega só o endereço cru, sem foto e sem chamada. Também
+        falta a descrição que o Google usa como resumo nos resultados de busca.</p>
+      <span class="prova">Confira: mande o link do site para você mesmo no WhatsApp.</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rot">O que já está pronto</p>
+    <h2>A página nova, com o conteúdo e as fotos de vocês</h2>
+    <p>Não é maquete nem projeto. Está construída, publicada e funcionando — com as fotos da equipe,
+      as seis especialidades e o endereço reais. Nada foi inventado.</p>
+
+    <div class="rolavel">
+      <table class="tab">
+        <thead>
+          <tr><th>&nbsp;</th><th>Site atual</th><th>Página nova</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Desempenho no celular</td><td>56 a 66 de 100</td><td>faixa verde do Google</td></tr>
+          <tr><td>Peso da página</td><td>1,4 MB</td><td>181 KB</td></tr>
+          <tr><td>Tempo até abrir</td><td>2,5 segundos</td><td>0,3 segundo</td></tr>
+          <tr><td>Arquivos carregados</td><td>77</td><td>18</td></tr>
+          <tr><td>Botões de WhatsApp corretos</td><td>4 de 5</td><td>todos</td></tr>
+          <tr><td>Descrição para o Google</td><td>não existe</td><td>configurada</td></tr>
+          <tr><td>Prévia ao compartilhar</td><td>não existe</td><td>com foto e chamada</td></tr>
+          <tr><td>Dados de clínica para o Google</td><td>não existem</td><td>endereço, telefone e as 6 especialidades</td></tr>
+          <tr><td>Legibilidade do texto</td><td>abaixo do mínimo recomendado</td><td>dentro da norma de acessibilidade</td></tr>
+          <tr><td>Plataforma</td><td>WordPress + Elementor (desatualizados)</td><td>página estática: sem plugin, sem login, sem atualização</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rot">O que muda para quem chega</p>
+    <h2>A página trabalha para marcar a consulta</h2>
+    <div class="duas">
+      <div class="cartao">
+        <h3>O texto continua sendo o de vocês</h3>
+        <p>Cada palavra da página nova saiu do site atual, sem reescrita: os mesmos títulos, as mesmas
+          descrições de tratamento, a mesma apresentação da clínica. O que muda é a apresentação, não a
+          comunicação de vocês. Se depois quiserem ajustar algum texto, aí sim a gente faz junto.</p>
+      </div>
+      <div class="cartao">
+        <h3>As seis especialidades ficam à mão</h3>
+        <p>No computador, os tratamentos passam sozinhos e a pessoa pode escolher qual ler. No celular,
+          todos já aparecem abertos — ninguém precisa descobrir onde tocar para ver o conteúdo.</p>
+      </div>
+      <div class="cartao">
+        <h3>O formulário abre pronto no WhatsApp</h3>
+        <p>Quem preenche não depende de e-mail: a mensagem chega montada no WhatsApp da clínica,
+          com nome, telefone e o motivo. Menos passo, menos desistência.</p>
+      </div>
+      <div class="cartao">
+        <h3>A reputação de vocês aparece</h3>
+        <p>São <strong>5,0 estrelas com 79 avaliações</strong> no Google — melhor que a do concorrente que
+          anuncia logo abaixo. Hoje quem entra no site não vê nada disso: os depoimentos existem, mas estão
+          presos em dois vídeos que quase ninguém consegue carregar.</p>
+      </div>
+      <div class="cartao">
+        <h3>Feita para o paciente mais velho</h3>
+        <p>No celular, os seis tratamentos já aparecem abertos — ninguém precisa descobrir onde tocar.
+          O texto tem contraste dentro da norma e corpo grande o bastante para ler sem esforço.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rot">Como funciona</p>
+    <h2>Da aprovação ao ar</h2>
+    <ul class="limpa">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>A página já existe.</strong> Vocês abrem o link, veem no celular e apontam o que quiserem mudar.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>Publicação no domínio de vocês.</strong> O site atual continua no ar enquanto isso: a página nova entra primeiro num endereço de teste, e só vira a página principal depois do aval de vocês. Reversível a qualquer momento.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>O WordPress não é apagado.</strong> Ele continua funcionando por trás; só a página inicial passa a ser a nova.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <span><strong>Backup antes de qualquer alteração.</strong> Nada é tocado no servidor sem cópia do que existe hoje.</span></li>
+    </ul>
+
+    <h3 style="margin-top:2.5rem">O que preciso de vocês</h3>
+    <ul class="limpa" style="margin-top:1rem">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Nome, especialidade e <strong>CRO</strong> de cada profissional, e o responsável técnico — exigência do Conselho Federal de Odontologia em publicidade, e que hoje não consta no site.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Horário de funcionamento, convênios aceitos e formas de pagamento. São as três perguntas que mais chegam antes de agendar, e não estão em lugar nenhum da página atual.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>Os dois vídeos de depoimento nos arquivos originais, para eu comprimir e hospedar do jeito certo.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rot">Investimento</p>
+    <h2>Duas linhas</h2>
+    <p class="preencher">[ PREENCHER ANTES DE ENVIAR — valor do projeto e valor da manutenção mensal ]</p>
+    <div class="duas" style="margin-top:1.5rem">
+      <div class="cartao">
+        <h3>A página</h3>
+        <p>Entrega da página publicada no domínio de vocês, com as correções descritas aqui,
+          os vídeos comprimidos e os dados que faltam incluídos.</p>
+        <p style="margin:0"><strong>R$ [valor] — pagamento [condição]</strong></p>
+      </div>
+      <div class="cartao">
+        <h3>Manutenção mensal <span style="font-weight:400">(opcional)</span></h3>
+        <p>Atualização de fotos, textos, novos depoimentos e acompanhamento do desempenho da página.
+          Sem isso, a página continua funcionando — só não muda sozinha.</p>
+        <p style="margin:0"><strong>R$ [valor] por mês</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top:0">
+  <div class="wrap">
+    <div class="fecho">
+      <h2>Veja a página antes de decidir qualquer coisa</h2>
+      <p>Ela abre no celular como abriria para um paciente. As fotos são as de vocês, os tratamentos
+        são os de vocês, o telefone é o de vocês — e funciona.</p>
+      <a class="btn" href="https://leonardocaldeira.com/inicio/risarte/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.4 1.3-1.95 1.35-.5.05-.98.23-3.3-.69-2.77-1.09-4.54-3.92-4.68-4.1-.14-.19-1.12-1.49-1.12-2.84 0-1.35.71-2.01.96-2.29.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.57.8 1.97.87 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.24 1.38.28.14.44.12.6-.07.16-.19.69-.81.88-1.08.19-.28.37-.23.62-.14.25.09 1.65.78 1.93.92.28.14.47.21.53.33.07.12.07.68-.17 1.35Z"/></svg>
+        Abrir a página
+      </a>
+      <p class="obs">Os quatro defeitos apontados aqui existem no site de vocês independentemente
+        desta proposta. Se preferirem corrigir com quem cuida do site hoje, o diagnóstico continua
+        valendo — foi feito para ser verificado.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Leonardo Caldeira · <a href="https://leonardocaldeira.com">leonardocaldeira.com</a><br>
+    Medições de desempenho: PageSpeed Insights (Google), 20 e 21 de agosto de 2026.
+    Peso, tempo de carregamento e número de arquivos medidos diretamente nas duas páginas.
+  </div>
+</footer>
