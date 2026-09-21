@@ -229,11 +229,6 @@ a{color:var(--acento)}
 .dados a:hover{border-color:#fff}
 .mapa{border-radius:var(--r-md);overflow:hidden;border:1px solid rgba(194,169,120,.3);position:relative;background:#123F4C}
 .mapa iframe{display:block;width:100%;height:clamp(260px,30vw,340px);border:0;filter:saturate(.94)}
-.mapa__abrir{display:none}
-.mapa:not(.is-on) iframe{display:none}
-.mapa:not(.is-on) .mapa__abrir{display:flex;width:100%;min-height:96px;align-items:center;justify-content:center;
-  gap:.6rem;border:0;background:none;color:#fff;font:600 1.05rem/1 var(--texto);cursor:pointer}
-.mapa__abrir svg{width:24px;height:24px;color:var(--dourado-luz)}
 .form{background:#fff;color:var(--corpo);border-radius:var(--r-md);padding:clamp(1.5rem,3vw,2.25rem);box-shadow:var(--sombra)}
 .campo{margin-bottom:var(--s5)}
 .campo label{display:block;font-weight:600;color:var(--tinta);margin-bottom:var(--s2);font-size:.97rem}
@@ -633,13 +628,9 @@ a{color:var(--acento)}
           </li>
         </ul>
         <div class="mapa" id="mapa">
-          <iframe data-src="https://maps.google.com/maps?q=R.%20Mato%20Grosso%2C%201858%20-%20Centro%2C%20Londrina%20-%20PR%2C%2086010-180&amp;t=m&amp;z=16&amp;output=embed"
+          <iframe src="https://maps.google.com/maps?q=R.%20Mato%20Grosso%2C%201858%20-%20Centro%2C%20Londrina%20-%20PR%2C%2086010-180&amp;t=m&amp;z=16&amp;output=embed"
                   title="Mapa: R. Mato Grosso, 1858 — Centro, Londrina" loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade" width="600" height="320"></iframe>
-          <button class="mapa__abrir" type="button" id="mapa-abrir">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 4 6 2 6-2v14l-6 2-6-2-6 2V6l6-2Z"/><path d="M9 4v14M15 6v14"/></svg>
-            Ver mapa
-          </button>
         </div>
       </div>
 
@@ -882,16 +873,6 @@ a{color:var(--acento)}
     ultimo.textContent = ultimo.textContent.replace(/\s+(\S+)\s*$/, '\u00A0$1');
   });
   semOrfa();
-
-  /* ------------------------------------------ mapa: no celular so no toque */
-  const mapa = q('#mapa'), mapaFrame = q('#mapa iframe');
-  const carregarMapa = () => {
-    if (!mapaFrame.getAttribute('src')) mapaFrame.src = mapaFrame.dataset.src;
-    mapa.classList.add('is-on');
-  };
-  if (!noCelular()) carregarMapa();
-  q('#mapa-abrir').addEventListener('click', carregarMapa);
-  addEventListener('resize', () => { if (!noCelular()) carregarMapa(); });
 
   /* ------------------------------------ formulário -> WhatsApp pronto -- */
   const form = q('#form'), status = q('#form-status');
