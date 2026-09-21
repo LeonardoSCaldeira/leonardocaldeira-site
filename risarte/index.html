@@ -338,17 +338,14 @@ a{color:var(--acento)}
   *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
   .rv{opacity:1;transform:none}
   .hero h1 .ln>span{transform:none}
-  /* a faixa fica parada, com o mesmo desenho da versao animada, sem barra de rolagem */
-  .esteira__pista{animation:none}
+  /* decisao do Leonardo (21/09): o carrossel roda mesmo com as animacoes do sistema desligadas.
+     a regra geral acima zera a duracao de toda animacao; aqui a faixa e a excecao */
+  .esteira__pista{animation-duration:52s !important;animation-iteration-count:infinite !important}
 }
 @media (prefers-reduced-motion:reduce) and (max-width:960px){
-  /* no celular a pessoa arrasta com o dedo, parando foto a foto */
-  .esteira{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
-  .esteira::-webkit-scrollbar{display:none}
-  .esteira__pista{display:flex;width:max-content;padding-right:1.25rem}
-  .esteira figure{width:min(78vw,340px);scroll-snap-align:start}
-  .esteira figure[aria-hidden="true"]{display:none}
+  .esteira__pista{animation-duration:38s !important}
 }
+
 </style>
 </head>
 <body>
