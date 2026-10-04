@@ -119,9 +119,11 @@ p { text-wrap: pretty; }
   transition: background-color 0.2s ease;
 }
 .botao:hover { background: var(--assinada); color: var(--papel); }
+.botao svg { transition: transform 0.2s ease; }
+.botao:hover svg { transform: translateX(4px); }
 .link-sec {
   display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
-  font-size: 16px; font-weight: 500; text-underline-offset: 6px;
+  font-size: 16px; font-weight: 500;
 }
 .link-sec__qtd { font: 12px var(--f-mono); color: var(--texto-sec); }
 
@@ -150,7 +152,7 @@ p { text-wrap: pretty; }
 /* Estado inicial da sequência, só quando o movimento é permitido */
 .anima .grade span { background: transparent; border-color: var(--vazio); }
 .anima .assinada__bloco { opacity: 0; transform: scale(0.6); }
-.anima .assinada__nome { clip-path: inset(0 100% 0 0); }
+.anima .assinada__nome { clip-path: inset(-0.5em calc(100% + 0.5em) -0.5em -0.5em); }
 
 .anima .tocando .grade span {
   animation: preencher 0.18s ease-out both;
@@ -168,9 +170,40 @@ p { text-wrap: pretty; }
   to { opacity: 1; transform: none; }
 }
 @keyframes assinar {
-  from { clip-path: inset(0 100% 0 0); }
+  from { clip-path: inset(-0.5em calc(100% + 0.5em) -0.5em -0.5em); }
+  to { clip-path: inset(-0.5em -0.5em -0.5em -0.5em); }
+}
+@keyframes carimbar {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+@keyframes revelar {
+  from { clip-path: inset(0 0 100% 0); }
   to { clip-path: inset(0 0 0 0); }
 }
+@keyframes riscar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes sublinhar {
+  0% { background-size: var(--sublinhado) 1px; background-position-x: 100%; }
+  45% { background-size: 0 1px; background-position-x: 100%; }
+  46% { background-size: 0 1px; background-position-x: 0; }
+  100% { background-size: var(--sublinhado) 1px; background-position-x: 0; }
+}
+
+/* Sublinhado que corre da esquerda no hover */
+.link-sec, .link-externo, .rodape a {
+  --sublinhado: 100%;
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) no-repeat;
+  background-size: var(--sublinhado) 1px;
+  background-position: 0 calc(50% + 0.75em);
+}
+.link-externo { --sublinhado: calc(100% - 22px); }
+.link-sec:hover, .link-externo:hover, .rodape a:hover { animation: sublinhar 0.6s cubic-bezier(0.65, 0, 0.35, 1); }
+.link-externo svg, .menu__whatsapp svg { transition: transform 0.2s ease; }
+.link-externo:hover svg, .menu__whatsapp:hover svg { transform: translate(2px, -2px); }
 
 .hero-rodape {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 40px;
@@ -223,6 +256,14 @@ p { text-wrap: pretty; }
 .print img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .print--largo { aspect-ratio: 16 / 10; }
 .print--pagina { aspect-ratio: 3 / 4; }
+.anima .destaque .print picture { clip-path: inset(0 0 100% 0); }
+.anima .destaque.tocando .print picture { animation: revelar 1s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.anima .destaque .moldura::before, .anima .cards .moldura::before { transform: scale(0); transform-origin: 0 0; }
+.anima .destaque.tocando .moldura::before { animation: carimbar 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.3) 0.9s both; }
+.anima .cards.tocando .moldura::before { animation: carimbar 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+.anima .cards.tocando li:nth-child(2) .moldura::before { animation-delay: 0.1s; }
+.anima .cards.tocando li:nth-child(3) .moldura::before { animation-delay: 0.2s; }
+.anima .cards.tocando li:nth-child(4) .moldura::before { animation-delay: 0.3s; }
 .legenda-fig { display: flex; justify-content: space-between; gap: 16px; font: 12px var(--f-mono); color: var(--texto-sec); }
 
 .destaque__info {
@@ -240,7 +281,7 @@ p { text-wrap: pretty; }
 .ficha dd { margin: 0; text-align: right; }
 .link-externo {
   align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
-  font-weight: 600; font-size: 16px; text-underline-offset: 6px;
+  font-weight: 600; font-size: 16px;
 }
 
 .outras { display: flex; flex-direction: column; gap: 24px; }
@@ -277,23 +318,54 @@ p { text-wrap: pretty; }
 .lista-servicos { margin: 0; padding: 0; list-style: none; }
 .servico {
   display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: baseline;
-  gap: 12px 48px; padding-block: 28px; border-bottom: 1px solid var(--tinta);
+  position: relative; gap: 12px 48px; padding-block: 28px;
 }
+.servico::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--tinta); transform-origin: 0 50%;
+}
+.anima .lista-servicos .servico::after { transform: scaleX(0); }
+.anima .lista-servicos.tocando .servico::after { animation: riscar 0.8s cubic-bezier(0.65, 0, 0.35, 1) both; }
+.anima .lista-servicos.tocando .servico:nth-child(2)::after { animation-delay: 0.12s; }
+.anima .lista-servicos.tocando .servico:nth-child(3)::after { animation-delay: 0.24s; }
+.anima .lista-servicos.tocando .servico:nth-child(4)::after { animation-delay: 0.36s; }
 .servico__nome { margin: 0; font-weight: 600; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.2; letter-spacing: -0.03em; }
 .servico__desc { margin: 0; max-width: 490px; font-size: 18px; line-height: 1.55; color: var(--texto-corpo); }
 
 /* Processo: a mesma página, do tracejado ao assinado */
 .etapas { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 .etapa { position: relative; display: flex; flex-direction: column; gap: 12px; padding: 56px 32px 0 0; }
-.etapa::before { content: ""; position: absolute; top: 16px; left: 0; right: 0; border-top: 1px solid var(--tinta); }
+.etapa:nth-child(2) { --n: 1; }
+.etapa:nth-child(3) { --n: 2; }
+.etapa:nth-child(4) { --n: 3; }
+.etapa::before, .etapa::after {
+  content: ""; position: absolute; top: 16px; left: 0; right: 0; height: 1px; background: var(--tinta);
+}
+.etapa::after { display: none; transform-origin: 0 50%; }
 .etapa:last-child::before { display: none; }
+.anima .etapa::before { background: var(--vazio); }
+.anima .etapa:not(:last-child)::after {
+  display: block;
+  transform: scaleX(clamp(0, calc(var(--avanco, 0) * 3 - var(--n, 0)), 1));
+}
 .etapa__pagina {
-  position: absolute; top: 0; left: 0; width: 24px; height: 32px;
+  position: absolute; top: 0; left: 0; z-index: 1; width: 24px; height: 32px;
   background: var(--papel); border: 1px solid var(--tinta);
 }
 .etapa--conversa .etapa__pagina { border: 1.5px dashed var(--tinta); }
 .etapa--construcao .etapa__pagina { background: var(--placeholder); }
 .etapa--no-ar .etapa__pagina { background: var(--assinada); border-color: var(--assinada); }
+.anima .etapa__pagina {
+  background: var(--papel); border: 1px dashed var(--vazio);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.anima .etapa--conversa.alcancada .etapa__pagina { border: 1.5px dashed var(--tinta); }
+.anima .etapa--desenho.alcancada .etapa__pagina { border: 1px solid var(--tinta); }
+.anima .etapa--construcao.alcancada .etapa__pagina { border: 1px solid var(--tinta); background: var(--placeholder); }
+.anima .etapa--no-ar.alcancada .etapa__pagina {
+  border: 1px solid var(--assinada); background: var(--assinada);
+  animation: carimbar 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.3);
+}
 .etapa__num { font: 12px var(--f-mono); color: var(--texto-sec); }
 .etapa__nome { margin: 0; font-weight: 600; font-size: clamp(24px, 2.4vw, 34px); line-height: 1.2; letter-spacing: -0.03em; }
 .etapa__texto { margin: 0; max-width: 300px; font-size: 18px; line-height: 1.55; color: var(--texto-corpo); }
@@ -332,23 +404,28 @@ p { text-wrap: pretty; }
 }
 .contato__nota { font: 12px var(--f-mono); color: var(--texto-sec); }
 .fecho {
-  margin: 0; padding-top: 24px; border-top: 1px solid var(--tinta);
+  margin: 0; text-align: center; padding-top: 24px; border-top: 1px solid var(--tinta);
   font-family: var(--f-assinatura); font-size: clamp(52px, 11vw, 168px); line-height: 1;
 }
+.fecho__nome { display: inline-block; }
+.anima .fecho__nome { clip-path: inset(-0.5em calc(100% + 0.5em) -0.5em -0.5em); }
+.anima .fecho.tocando .fecho__nome { animation: assinar 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.1s both; }
 
 .rodape {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 40px;
   padding-block: 4px 16px; border-top: 1px solid var(--tinta);
   font: 12px/1.6 var(--f-mono); color: var(--texto-sec);
 }
-.rodape a { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 4px; }
+.rodape a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* ---------- Telas médias ---------- */
 @media (max-width: 1000px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .etapas { grid-template-columns: minmax(0, 1fr); }
   .etapa { padding: 0 0 40px 56px; }
-  .etapa::before { top: 0; bottom: 0; left: 12px; right: auto; border-top: 0; border-left: 1px solid var(--tinta); }
+  .etapa::before, .etapa::after { top: 0; bottom: 0; left: 12px; right: auto; width: 1px; height: auto; }
+  .etapa::after { transform-origin: 50% 0; }
+  .anima .etapa:not(:last-child)::after { transform: scaleY(clamp(0, calc(var(--avanco, 0) * 3 - var(--n, 0)), 1)); }
   .etapa:last-child { padding-bottom: 0; }
   .etapa__texto { max-width: 490px; }
 }
