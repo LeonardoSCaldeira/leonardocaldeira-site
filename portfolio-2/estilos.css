@@ -84,6 +84,30 @@ p { text-wrap: pretty; }
   display: none; min-height: 44px; padding: 0 16px; background: transparent;
   border: 1px solid var(--tinta); color: var(--tinta); font: 13px var(--f-mono); cursor: pointer;
 }
+.topo__whatsapp {
+  display: none; align-items: center; min-height: 44px; padding: 0 14px; margin-left: auto;
+  background: var(--tinta); color: var(--papel); font-weight: 600; font-size: 14px; text-decoration: none;
+}
+.topo__whatsapp:hover { background: var(--assinada); color: var(--papel); }
+
+/* WhatsApp flutuante: aparece ao descer, some ao subir e quando outro botão de WhatsApp está na tela */
+.whats-flutuante {
+  position: fixed; right: var(--margem); bottom: calc(var(--margem) + env(safe-area-inset-bottom, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px 0 14px;
+  background: var(--tinta); color: var(--papel); border: 1px solid var(--papel);
+  font-weight: 600; font-size: 15px; text-decoration: none;
+  visibility: hidden; transform: translateY(calc(100% + var(--margem) + 24px));
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), visibility 0s linear 0.35s, background-color 0.2s ease;
+}
+.whats-flutuante.visivel {
+  visibility: visible; transform: none;
+  transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1), visibility 0s, background-color 0.2s ease;
+}
+.whats-flutuante:hover { background: var(--assinada); color: var(--papel); }
+.whats-flutuante__marca { flex-shrink: 0; width: 9px; height: 12px; background: var(--assinada); }
+.whats-flutuante:hover .whats-flutuante__marca { background: var(--papel); }
+.whats-flutuante svg { transition: transform 0.2s ease; }
+.whats-flutuante:hover svg { transform: translateX(3px); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -432,8 +456,11 @@ p { text-wrap: pretty; }
 
 /* ---------- Celular ---------- */
 @media (max-width: 760px) {
+  .topo { column-gap: 8px; }
   .topo__meta { display: none; }
-  .logo { font-size: 36px; }
+  .logo { font-size: 32px; }
+  .topo__whatsapp { display: inline-flex; }
+  .botao-menu { padding: 0 12px; }
   .js .botao-menu { display: inline-flex; align-items: center; }
   .navegacao { width: 100%; }
   .js .navegacao { display: none; }
@@ -466,4 +493,9 @@ p { text-wrap: pretty; }
   .sobre__foto { justify-self: stretch; max-width: none; }
   .contato__acao { flex-basis: 100%; }
   .contato__pagina { width: 48px; }
+}
+
+@media (max-width: 380px) {
+  .logo { font-size: 27px; }
+  .topo__whatsapp { padding: 0 12px; font-size: 13px; }
 }
